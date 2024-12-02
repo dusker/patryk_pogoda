@@ -11,6 +11,8 @@
 <?php
  $user_ip = $_SERVER['REMOTE_ADDR'];
  echo "Your IP address is: " . htmlspecialchars($user_ip);
+ $location = file_get_contents('http://freegeoip.net/json/'.$user_ip);
+ echo $location;
 ?>
 </body>
 </html>
