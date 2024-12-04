@@ -12,7 +12,6 @@
     </form>
 
 <?php
-
  $user_ip = $_SERVER['REMOTE_ADDR'];
  echo "Your IP address is: " . htmlspecialchars($user_ip);
  $location = json_decode(file_get_contents('http://ip-api.com/json/'.$user_ip), true);
