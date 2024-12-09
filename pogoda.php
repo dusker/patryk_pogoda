@@ -31,6 +31,27 @@ if ($mysqli -> connect_errno) {
  echo "Temperature: " . htmlspecialchars($weather_data['main']['temp']) . "°C<br>";
  echo "Humidity: " . htmlspecialchars($weather_data['main']['humidity']) . "%<br>";
  echo "Cloudiness: " . htmlspecialchars($weather_data['clouds']['all']) . "%<br>";
+
+ $data = date('Y-m-d H:i:s');
+ $query = "INSERT INTO logi (Adres_ip, Data, lokalizacja) VALUES (?, ?,?)";
+ $stmt = mysqli_prepare($conn, $query);
+ if ($stmt) {
+     // Adjust the bind_param types according to your database schema
+     mysqli_stmt_bind_param($stmt, 'iss', $user_ip, $data, $fixed_loca);
+     
+     // Execute the statement
+     if (mysqli_stmt_execute($stmt)) {
+     
+     } else {
+         echo "Error executing statement: " . mysqli_stmt_error($stmt);
+     }
+     
+     mysqli_stmt_close($stmt);
+ } else {
+     echo "Error preparing statement: " . mysqli_error($conn);
+ }
+ 
+
 ?>
 </body>
 </html>
