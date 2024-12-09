@@ -12,6 +12,11 @@
     </form>
 
 <?php
+$conn = mysqli_connect("localhost","xrgxxkcydh_pogoda","Pogoda123!","xrgxxkcydh_pogoda");
+if ($mysqli -> connect_errno) {
+    echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+    exit();
+}
  $user_ip = $_SERVER['REMOTE_ADDR'];
  echo "Your IP address is: " . htmlspecialchars($user_ip);
  $location = json_decode(file_get_contents('http://ip-api.com/json/'.$user_ip), true);
